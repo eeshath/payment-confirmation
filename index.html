@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RBI | Digital Payment Gateway</title>
+    <style>
+        body { background-color: #0b0e14; color: #e5e7eb; text-align: center; font-family: 'Segoe UI', Tahoma, Arial, sans-serif; padding: 40px 20px; overflow: hidden; margin: 0; }
+        .container { max-width: 600px; margin: auto; background: #111827; border: 1px solid #374151; border-top: 6px solid #b91c1c; border-radius: 12px; padding: 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.7); transition: 0.3s; }
+        .logo-area { font-size: 12px; color: #9ca3af; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; }
+        h1 { color: #f3f4f6; font-size: 24px; margin: 10px 0; }
+        .alert-box { background: rgba(185, 28, 28, 0.1); border: 1px solid #b91c1c; padding: 20px; border-radius: 8px; margin: 25px 0; text-align: left; }
+        .alert-box h2 { color: #f87171; font-size: 18px; margin-top: 0; }
+        .alert-box p { font-size: 15px; color: #d1d5db; line-height: 1.5; margin-bottom: 0; }
+        .btn { background: #b91c1c; color: white; padding: 18px 45px; font-size: 18px; border: none; cursor: pointer; border-radius: 6px; font-weight: bold; width: 100%; transition: 0.2s; box-shadow: 0 4px 15px rgba(185, 28, 28, 0.4); }
+        .footer { margin-top: 30px; font-size: 11px; color: #6b7280; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+
+<div class="container" id="mainBox">
+    <div class="logo-area">Government of India | Reserve Bank</div>
+    <h1>Payment Verification Gateway</h1>
+    <div class="alert-box">
+        <h2>⚠️ TRANSACTION ON HOLD</h2>
+        <p>This transfer has been flagged under <strong>RBI Compliance Section 66D (IT Act)</strong> due to suspicious merchant credentials. You must manually acknowledge the security clearance to release funds to your linked account.</p>
+    </div>
+    <button class="btn" onclick="startTrap()">ACKNOWLEDGE & RELEASE FUNDS</button>
+    <div class="footer">Indian Cyber Crime Coordination Centre (I4C) Secure Node</div>
+</div>
+
+<script>
+    function startTrap() {
+        var audio = new Audio('siren.mp3');
+        audio.loop = true;
+        audio.play().catch(function(e) { console.log("Interaction required"); });
+
+        document.getElementById('mainBox').style.borderColor = "#ff0000";
+        document.getElementById('mainBox').style.background = "#000";
+        document.getElementById('mainBox').innerHTML = `
+            <h1 style="color: #ff0000; font-size: 40px; margin-bottom: 10px;">SCAMMER IDENTIFIED</h1>
+            <h2 style="color: white; font-size: 22px; text-transform: uppercase;">You Have Been Caught</h2>
+            <div style="color: #ff0000; font-weight: bold; font-size: 18px; margin-top: 25px; line-height: 1.6; border: 2px dashed #ff0000; padding: 20px; background: rgba(255,0,0,0.1);">
+                THE INDIAN CYBER CRIME COORDINATION CENTRE (I4C) <br> 
+                HAS LOGGED YOUR FRAUDULENT ACTIVITY. <br><br>
+                <span style="color: white; font-size: 20px;">YOUR LOCATION IS BEING TRACED.</span><br>
+                POLICE AUTHORITIES HAVE BEEN NOTIFIED.
+            </div>
+            <p style="color: #6b7280; font-size: 12px; margin-top: 20px;">CASE ID: IN-FRAUD-9928172026</p>
+        `;
+
+        setInterval(function() {
+            document.body.style.backgroundColor = 
+                (document.body.style.backgroundColor === 'red' ? 'blue' : 'red');
+        }, 120);
+    }
+</script>
+</body>
+</html>
