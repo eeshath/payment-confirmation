@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚨 SECURITY BREACH DETECTED 🚨</title>
+    <style>
+        body { background-color: #000; color: #f00; text-align: center; font-family: 'Courier New', monospace; padding-top: 50px; overflow: hidden; }
+        .box { border: 10px solid #f00; display: inline-block; padding: 50px; background: #111; box-shadow: 0 0 50px #f00; }
+        h1 { font-size: 60px; margin-bottom: 10px; text-transform: uppercase; }
+        p { font-size: 20px; color: #fff; }
+        .btn { background: #f00; color: #fff; padding: 30px 60px; font-size: 30px; border: none; cursor: pointer; font-weight: bold; margin-top: 20px; border-radius: 10px; }
+        .btn:hover { background: #fff; color: #f00; }
+        #overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: red; opacity: 0.5; pointer-events: none; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>⚠️ SYSTEM ALERT ⚠️</h1>
+        <p>CYBER-CRIME DIVISION HAS INTERCEPTED THIS CONNECTION.</p>
+        <p><strong>IP ADDRESS:</strong> <span id="ip">192.XXX.XX.XX</span></p>
+        <p><strong>STATUS:</strong> TRACKING TERMINAL...</p>
+        <button class="btn" onclick="startTrap()">CLICK TO DISMISS WARNING</button>
+    </div>
+
+    <audio id="siren" loop>
+        <source src="zapsplat_emergency_police_siren_isolated_clean_003_63709" type="audio/mpeg">
+    </audio>
+
+    <div id="overlay"></div>
+
+    <script>
+        function startTrap() {
+            const audio = document.getElementById('siren');
+            const overlay = document.getElementById('overlay');
+            
+            audio.play(); // Starts the loud siren
+            
+            // Flashing screen effect
+            setInterval(() => {
+                overlay.style.display = (overlay.style.display === 'none' ? 'block' : 'none');
+                document.body.style.backgroundColor = (document.body.style.backgroundColor === 'black' ? '#200' : 'black');
+            }, 100);
+
+            alert("POLICE NOTIFIED. REMAIN AT YOUR TERMINAL.");
+        }
+    </script>
+</body>
+</html>
